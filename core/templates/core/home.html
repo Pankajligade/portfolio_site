@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="mt-5 text">
+    <div class="text-center">
+        <img src="{% static 'core/images/my1.jpeg' %}" alt="profile" class="img-thumbnail" width="250px" height="150px">
+    </div>
+
+    <div class="mt-5 text-white mx-5 text-justify">
+        <h1 class="font-weight-bold satisfy-regular">Hello !!</h1>
+        <div class="px4" style="line-height:2rem:">
+            <p style="text-indent:100px">
+                I am <b class="text-warning">Pankaj Ligade</b> working at  <b class="text-warning">Clover Infotech </b>
+                as Software Engineer.
+                Experienced IT professional with over 6 years of comprehensive experience, with a dedicated focus on
+                Python, Django, Data Analysis,Machine learning and Data visualization. With 3.1 years of specialization in these key areas,
+                I have honed my expertise in crafting robust solutions and leveraging data-driven insights to drive business success.
+
+            </p>
+
+        </div>
+        <br>
+        <div class="text-center mt-3">
+            <div class="d-inline-block mr-4 text-center">
+                <a href="mailto:pankaj.ligade@gmail.com?subject=Inquiry" class="btn btn-success">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <br>
+                <span class="text-white mt-2">Send Email</span>
+            </div>
+
+            <div class="d-inline-block text-center">
+                <a href="{% static 'core/cv/resume.pdf' %}" download class="btn btn-primary mr-2">
+                    <i class="fa-regular fa-file"></i>
+                </a>
+                <br>
+                <span class="text-white mt-2">Download CV</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

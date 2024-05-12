@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-warning mb-5 border-bottom">Contact Us</h1>
+    <form method="post" action="{% url 'contact_submit' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name" style="color: yellow;">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email" style="color: yellow;">Email address:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="requirements" style="color: yellow;">Requirements:</label>
+            <textarea class="form-control" id="requirements" name="requirements" rows="5" required></textarea>
+        </div>
+        <div  class="mt-4">
+        <button type="submit" class="btn btn-primary">Submit</button> </div>
+    </form>
+    <div class="text-center mt-3">
+        <a href="https://www.linkedin.com/in/pankaj-ligade-39856b95/" target="_blank" class="mr-3">
+            <i class="fab fa-linkedin fa-2x"></i>
+        </a>
+
+        <p style="color: yellow; margin-top: 10px;"><i class="fa-solid fa-location-dot"></i> Mumbai, MH, INDIA</p>
+    </div>
+</div>
+{% endblock content %}
