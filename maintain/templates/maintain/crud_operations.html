@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <link rel="stylesheet" href="{% static 'css/crud.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>CRUD Operations</h1>
+        
+        <!-- Create/Update Form -->
+        <form method="post" action="{% url 'crud_operations' %}">
+            {% csrf_token %}
+            <input type="hidden" id="sr_no" name="sr_no" value="{{ form.instance.sr_no }}">
+            <div>
+                <label for="record_date">Date:</label>
+                {{ form.record_date }}
+            </div>
+            <div>
+                <label for="amount">Amount:</label>
+                {{ form.amount }}
+            </div>
+            <div>
+                <label for="name">Name:</label>
+                {{ form.name }}
+            </div>
+            <div>
+                <label for="address">Address:</label>
+                {{ form.address }}
+            </div>
+            <button type="submit" name="action" value="create">Submit</button>
+            <button type="submit" name="action" value="update" style="display:none;" id="updateBtn">Update</button>
+            <button type="submit" name="action" value="delete" style="display:none;" id="deleteBtn">Delete</button>
+            <button type="reset">Clear</button>
+        </form>
+        
+        <!-- Record Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Insert Date</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                <tr>
+                    <td>{{ record.sr_no }}</td>
+                    <td>{{ record.insert_date }}</td>
+                    <td>{{ record.record_date }}</td>
+                    <td>{{ record.amount }}</td>
+                    <td>{{ record.name }}</td>
+                    <td>{{ record.address }}</td>
+                    <td>
+                        <a href="{% url 'crud_operations_with_id' sr_no=record.sr_no %}" class="editBtn">Edit</a>
+                        <form method="post" action="{% url 'delete_record' sr_no=record.sr_no %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="deleteBtn">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Download Buttons -->
+        <a href="{% url 'download_csv' %}" class="download-btn">Download CSV</a>
+        <a href="{% url 'download_excel' %}" class="download-btn">Download Excel</a>
+
+        {% if success_message %}
+        <div class="success-message">
+            {{ success_message }}
+        </div>
+        {% endif %}
+        
+        {% if error_message %}
+        <div class="error-message">
+            {{ error_message }}
+        </div>
+        {% endif %}
+    </div>
+
+
+    <!-- Add this script before the closing </body> tag in crud_operations.html -->
+<script>
+    document.querySelectorAll('.deleteBtn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            if (!confirm('Are you sure you want to delete this record?')) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

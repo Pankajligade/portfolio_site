@@ -1,0 +1,132 @@
+{% load static %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/core.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        form button {
+            padding: 0.8rem;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        .admin-link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        <div class="admin-link">
+            <p><a href="{% url 'admin:index' %}">Admin Login</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/core.css' %}">
+    <style>
+        .login-container {
+            background: rgba(255, 255, 255, 0.8); /* Transparent background */
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        {% block content %}
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        {% endblock %}
+    </div>
+</body>
+</html>
+
+
+
+
+
+ -->
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    {% if form.errors %}
+        <p style="color:red;">Please correct the error{{ form.errors|length|pluralize }} below.</p>
+    {% endif %}
+    <p><a href="{% url 'admin:login' %}">Admin Login</a></p>
+</body>
+</html> -->

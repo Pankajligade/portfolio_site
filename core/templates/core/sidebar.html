@@ -1,30 +1,33 @@
 {% load static %}
 <div class="border-right border-warning h-100">
-                <div class="text-center">
-                    <img src="{% static 'core/images/my1.jpeg' %}" alt="profile_pic" class="img-fluid rounded-circle mt-5" width="100px" height="100px">
-                </div>
-                <h3 class="text-white text-center mt-3 satisfy-regular">Pankaj Ligade</h3>
-                <hr class="border-light">
+    <div class="text-center">
+        <img src="{% static 'core/images/my1.jpeg' %}" alt="profile_pic" class="img-fluid rounded-circle mt-5"
+            width="100px" height="100px">
+    </div>
+    <h3 class="text-white text-center mt-3 satisfy-regular">Pankaj Ligade</h3>
+    <hr class="border-light">
 
-                <nav class="nav flex-column text-center">
-                    <a href="{% url 'home' %}" class="nav-link" style="color: white !important; text-decoration: none !important;"
-   onmouseover="this.style.color='gold';" onmouseout="this.style.color='white';">Home</a>
-                    <a href="{% url 'services' %}" class="nav-link" style="color: white !important; text-decoration: none !important;"
-   onmouseover="this.style.color='gold';" onmouseout="this.style.color='white';">Services</a>
+    <nav class="nav flex-column text-center">
+        <a href="{% url 'home' %}" class="nav-link" style="color: white !important; text-decoration: none !important;"
+            onmouseover="this.style.color='gold';" onmouseout="this.style.color='white';">Home</a>
 
-<a href="{% url 'skill' %}" class="nav-link" style="color: white !important; text-decoration: none !important;"
-   onmouseover="this.style.color='gold';" onmouseout="this.style.color='white';">Skills</a>
+        <a href="{% url 'services' %}" class="nav-link"
+            style="color: white !important; text-decoration: none !important;" onmouseover="this.style.color='gold';"
+            onmouseout="this.style.color='white';">Services</a>
 
-<a href="{% url 'contact' %}" class="nav-link" style="color: white !important; text-decoration: none !important;"
-   onmouseover="this.style.color='gold';" onmouseout="this.style.color='white';">Contact</a>
+        <a href="{% url 'skill' %}" class="nav-link" style="color: white !important; text-decoration: none !important;"
+            onmouseover="this.style.color='gold';" onmouseout="this.style.color='white';">Skills</a>
+
+        <a href="{% url 'contact' %}" class="nav-link"
+            style="color: white !important; text-decoration: none !important;" onmouseover="this.style.color='gold';"
+            onmouseout="this.style.color='white';">Contact</a>
 
 
-<!--                    <a href="{% url 'home' %}" class="nav-link">Home</a>-->
-<!--                        <a href="{% url 'home' %}" class="nav-link" style="color: white !important;">Home</a>-->
 
-<!--                    <a href="{% url 'services' %}" class="nav-link">Services</a>-->
-<!--                    <a href="{% url 'skill'%}" class="nav-link">Skills</a>-->
-<!--                    <a href="{% url 'contact'%}" class="nav-link">Contact</a>-->
-                </nav>
 
-            </div>
+        <a href="{% url 'login' %}" class="nav-link-box">Log in</a>
+
+
+    
+    </nav>
+</div>

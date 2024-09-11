@@ -30,6 +30,16 @@ nav a.nav:hover {
     background-color: red !important;
 }
 
+body {
+  font-family: Arial, sans-serif;
+}
 
+.admin-container, .secured-section, .login-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
 
 

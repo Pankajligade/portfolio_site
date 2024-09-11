@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Secured Section{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+        }
+        .secured-container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .back-link {
+            margin-top: 1rem;
+        }
+        .back-link a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="secured-container">
+        <h2>{% block header %}Welcome to the Secured Section{% endblock %}</h2>
+        
+        {% block content %}
+        <li><a href="{% url 'power_bi_dashboard' %}">Power BI Dashboard</a></li>
+        <li><a href="{% url 'ml_prediction' %}">Machine Learning Predictions</a></li>
+        <li><a href="{% url 'crud_operations' %}">CRUD Operations</a></li>
+        <li><a href="{% url 'report_page' %}">Reports</a></li>        {% endblock %}
+        
+        <div class="back-link">
+            <a href="{% url 'secured_section' %}">Back to Secured Section</a>
+        </div>
+    </div>
+</body>
+</html>

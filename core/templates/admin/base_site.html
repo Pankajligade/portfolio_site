@@ -1,0 +1,13 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/core.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="admin-container">
+        {% block content %}
+        {% endblock %}
+    </div>
+{% endblock %}

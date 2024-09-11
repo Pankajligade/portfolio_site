@@ -1,0 +1,43 @@
+/* custom.css */
+.nav-link-box {
+    color: white !important;
+    text-decoration: none !important;
+    padding: 10px 20px;
+    background-color: #333;
+    border-radius: 5px;
+    border: 2px solid white;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.nav-link-box:hover {
+    color: gold;
+    background-color: #555;
+    border-color: gold;
+}
+/* static/css/styles.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Login Page Styles */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 100px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Admin Page Styles */
+.admin-container {
+    padding: 20px;
+}
+
+/* Secured Section Styles */
+.secured-section-container {
+    padding: 20px;
+}

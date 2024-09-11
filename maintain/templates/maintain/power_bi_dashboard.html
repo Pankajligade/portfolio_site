@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Dashboard - Amazon Sales Data</title>
+    <link rel="stylesheet" href="{% static 'css/power_bi_dashboard.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Amazon Sales Data (2021-2023)</h1>
+        <div class="dashboard-wrapper">
+            <iframe title="sales_BI" width="1450" height="650" src="https://app.powerbi.com/view?r=eyJrIjoiNjNmZWE3YzYtZTJiYS00NmJiLWJiZDktNDMzZWY3YjY3ZGMxIiwidCI6Ijg5OWQxOTA3LTAwMzEtNGFiZC1hYmI4LTA0ZjcwMWFmMDlhMyIsImMiOjh9&embedImagePlaceholder=true" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+        <a href="{% url 'secured_section' %}" class="back-link">← Back to Secured Section</a>
+    </div>
+</body>
+</html>

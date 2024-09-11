@@ -1,0 +1,53 @@
+{% extends 'base_secured.html' %}
+
+{% block title %}Secured Section Home{% endblock %}
+
+{% block header %}Secured Section{% endblock %}
+
+{% block content %}
+<p>Welcome to the secured section. You can navigate to different tools and features from here.</p>
+
+<ul>
+    <li><a href="{% url 'power_bi_dashboard' %}">Power BI Dashboard</a></li>
+    <li><a href="{% url 'ml_prediction' %}">Machine Learning Predictions</a></li>
+    <li><a href="{% url 'crud_operations' %}">CRUD Operations</a></li>
+    <li><a href="{% url 'report_page' %}">Reports</a></li>
+</ul>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- {% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secured Section</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}">
+
+</head>
+<body>
+    <h1>Welcome to the Secured Section</h1>
+    <ul>
+        <li><a href="{% url 'power_bi_dashboard' %}">Power BI Dashboard</a></li>
+        <li><a href="{% url 'ml_prediction' %}">Machine Learning Predictions</a></li>
+        <li><a href="{% url 'crud_operations' %}">CRUD Operations</a></li>
+        <li><a href="{% url 'report_page' %}">Reports</a></li>
+    </ul>
+</body>
+</html> -->

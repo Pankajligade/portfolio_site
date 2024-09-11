@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Records Report</title>
+    <link rel="stylesheet" href="{% static 'css/report.css' %}">
+</head>
+<body>
+    <h1>Loan Records Report</h1>
+    <form method="get" action="{% url 'report_page' %}">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="{{ request.GET.date }}">
+        
+        <label for="customer_id">Customer ID:</label>
+        <input type="text" id="customer_id" name="customer_id" value="{{ request.GET.customer_id }}">
+        
+        <label for="account_no">Account No:</label>
+        <input type="text" id="account_no" name="account_no" value="{{ request.GET.account_no }}">
+    
+        <button type="submit">Filter</button>
+        <button type="submit" name="export" value="csv">Download CSV</button>
+    </form>
+    
+
+    <table>
+        <thead>
+            <tr>
+                <th>Account No</th>
+                <th>Customer ID</th>
+                <th>Loan Amount</th>
+                <th>Loan Date</th>
+                <th>Interest</th>
+                <th>Loan Type</th>
+                <th>Loan Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.account_no }}</td>
+                <td>{{ record.customer_id }}</td>
+                <td>{{ record.loan_amount }}</td>
+                <td>{{ record.loan_date }}</td>
+                <td>{{ record.interest }}</td>
+                <td>{{ record.loan_type }}</td>
+                <td>{{ record.loan_score }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7">No records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

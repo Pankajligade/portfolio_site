@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import pyodbc
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,17 @@ INSTALLED_APPS = [
     'core',
     'edu',
     'serv',
+    'maintain',
+    'allauth',
+    'allauth.account',
+    'django_otp',
+    'django_otp.plugins.otp_totp', 
+    'two_factor',
+    'two_factor.plugins.phonenumber',
+    'django_otp.plugins.otp_static',  # For static OTP
+    'phonenumber_field',
+
+
 ]
 
 MIDDLEWARE = [
@@ -48,16 +60,22 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Add this line
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_otp.middleware.OTPMiddleware',
+
 ]
+
 
 ROOT_URLCONF = 'resumeproject.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Add your base template directory here
+
+        # 'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,6 +116,7 @@ DATABASES = {
 # }
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -134,8 +153,11 @@ USE_TZ = True
 import os
 # STATIC_URL = 'static/'
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / "static",
 ]
 
 
@@ -143,3 +165,25 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# LOGIN_REDIRECT_URL = '/maintain/secured_section/'  # or use 'secured_section'
+LOGIN_URL = 'two_factor:login'
+LOGIN_REDIRECT_URL = 'secured_section' 
+
+# LOGIN_REDIRECT_URL = '/maintain/dashboard/'  # Redirect to secured section after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect to home page after logout
+# LOGIN_URL = 'login'
+# LOGIN_REDIRECT_URL = 'secured_section'
+SITE_ID = 1
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+
+
+# Email settings (example for mailtrap)
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '44e70606cf1020'
+EMAIL_HOST_PASSWORD = 'b8b9d3c224f07c'
+EMAIL_PORT = '2525'
+
